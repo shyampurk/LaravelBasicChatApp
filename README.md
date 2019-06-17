@@ -42,7 +42,7 @@ After cloning the repository perform the following steps
 1. Open the .ENV file and update the following
 
     -   Line 10: Replace the placeholder <DB_HOST_IP> with your database host IP
-    -   Line 11: Replace the placeholder <DB_HOST_NAME> with your database port name
+    -   Line 11: Replace the placeholder <DB_PORT_NUM> with your database port name
     -   Line 12: Replace the placeholder <DB_NAME> with your database name
     -   Line 13: Replace the placeholder <DB_USERNAME> with your database username
     -   Line 14: Relpace the placeholder <DB_PASSWORD> with your database password
