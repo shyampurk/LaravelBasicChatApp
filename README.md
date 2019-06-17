@@ -69,8 +69,13 @@ After cloning the repository perform the following steps
 
     -   npm run watch
     
-3. Launch the chat app via your web browser by pointing to teh URL 
+3. Launch the web server
+
+
+4. Launch the chat app via your web browser by pointing to the URL 
 
     http://<HOST_OR_IP>/LaravelBasicChatApp/public
     
     where <HOST_OR_IP> is your web server's root address
+    
+    Also make sure that the cloned repo is within the web root folder of your web server
