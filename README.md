@@ -37,7 +37,7 @@ After cloning the repository perform the following steps
 
     -   npm install
     
-## Configure 
+### Configure 
 
 1. Open the .ENV file and update the following
 
@@ -49,11 +49,17 @@ After cloning the repository perform the following steps
     -   Line 46: Replace the placeholder <PUBNUB_PUBLISH_KEY> with your PubNub publish key
     -   Line 47: Replace the placeholder <PUBNUB_SUBSCRIBE_KEY> with your PubNub subscribe key
     
-2. Open the [domainconfig.js](resources/js/domainconfig.js) file and update the following
+2. Open the file [PubnubConfig.php](/app/PubnubConfig.php) and update the following
+
+    -   Line 19: Replace the placeholder <PUBNUB_SUBSCRIBE_KEY> with your PubNub subscribe key
+    -   Line 20: Replace the placeholder <PUBNUB_PUBLISH_KEY> with your PubNub publish key
+    -   Line 21: Replace the placeholder <PUBNUB_SECRET_KEY> with your PubNub secret key
+
+3. Open the [domainconfig.js](resources/js/domainconfig.js) file and update the following
 
     -   Line 1: Replace the placeholder <HOST_OR_IP> with your web servers root address
     
-3. Open the [pubnubconfig.js](resources/js/pubnubconfig.js) file and update the following
+4. Open the [pubnubconfig.js](resources/js/pubnubconfig.js) file and update the following
 
     -   Line 3: Replace the placeholder <PUBNUB_SUBSCRIBE_KEY> with your PubNub subscribe key
     -   Line 4: Replace the placeholder <PUBNUB_PUBLISH_KEY> with your PubNub publish key
