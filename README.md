@@ -59,3 +59,18 @@ After cloning the repository perform the following steps
     -   Line 4: Replace the placeholder <PUBNUB_PUBLISH_KEY> with your PubNub publish key
     -   Line 5: Replace the placeholder <PUBNUB_SECRET_KEY> with your PubNub secret key
      
+## Run
+
+1. Generate autoload.php to aggregate all vendor dependencies
+
+    -   composer dump-autoload
+    
+2. Compile the run Vue application 
+
+    -   npm run watch
+    
+3. Launch the chat app via your web browser by pointing to teh URL 
+
+    http://<HOST_OR_IP>/LaravelBasicChatApp/public
+    
+    where <HOST_OR_IP> is your web server's root address
