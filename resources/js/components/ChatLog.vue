@@ -5,7 +5,7 @@
   >
   
    <message-bubble
-      v-for="(message,index) in messages"
+      v-for="(message,index) in getCurrentChatMessages"
       :key="index"
       :time="message.time"
       :text="message.text"
@@ -26,7 +26,7 @@
 <script>
 import MessageBubble from './MessageBubble';
 import Pubnub from 'pubnub-vue'
-import {mapState} from 'vuex'
+import {mapState, mapGetters} from 'vuex'
 
 export default {
 name: 'chat-log',
@@ -34,68 +34,57 @@ components: {MessageBubble},
 props: ['username'],
 data() {  
 	return {
-		incomingMessage: this.$pnGetMessage(this.$store.state.currentChat.chatKey,this.storeMessages),
-    messages: [],
+    incomingMessage: this.$pnGetMessage(this.$store.state.currentChat,this.storeMessages),
     }
 },
 methods: {
 	storeMessages(response) {
-    if(this.$store.state.currentChat.chatKey === response.message.channel) {
-      if(this.messages.length <= 15) {
-        this.messages.push(response.message)
-      }  
-      else {
-        this.messages.shift()
-        this.messages.push(response.message)
-      }
-    }      
+    this.$store.commit('addMessage',response.message)
   }
+
 },
 watch: {
   currentChat: function() {
-   
     let currentChatKey = []
-    currentChatKey.push(this.currentChat.chatKey)
-     this.$pnSubscribe({
-        channels: currentChatKey
-  })
-  this.messages = []
-  Pubnub.getInstance().history({
-        channel: this.currentChat.chatKey,
-        count: 15, // how many items to fetch
-        stringifiedTimeToken: true, // false is the default
-	})
-	.then(response => {
-		response.messages.forEach(message => {
-			this.messages.push(message.entry)
-		})
-  })
-  this.incomingMessage =  this.$pnGetMessage(this.currentChat.chatKey,this.storeMessages)
+    currentChatKey.push(this.currentChat)
+    this.$pnSubscribe({
+      channels: currentChatKey
+    })
+    let mL = []
+    Pubnub.getInstance().history({
+      channel: currentChatKey,
+      count: 15, // how many items to fetch
+      stringifiedTimeToken: true, // false is the default
+	  })
+	  .then(response => {
+		  response.messages.forEach(message => {
+        mL.push(message.entry)
+        this.$store.state.friends.forEach(friend => {
+          if(friend.chatKey == this.currentChat) {
+            friend.lastMessage = message.entry.text
+          }
+        })
+		  })
+    })
+    this.$store.commit('updateChat',{chatKey: this.currentChat,messages: mL})
+    this.incomingMessage =  this.$pnGetMessage(this.currentChat,this.storeMessages)
   } 
 },
 computed: {
   user() {
     return this.$store.state.user
   },
+  ...mapGetters([
+    'getCurrentChatMessages'
+  ]),
   ...mapState([
     'currentChat',
-  ])
+  ]), 
 },
 created() {
 	 this.$pnSubscribe({
-        channels: [this.currentChat.chatKey]
+        channels: [this.currentChat]
   })
-	Pubnub.getInstance().history({
-        channel: 'global',
-        count: 15, // how many items to fetch
-        stringifiedTimeToken: true, // false is the default
-	})
-	.then(response => {
-		response.messages.forEach(message => {
-			this.messages.push(message.entry)
-		})
-  })
-  
 },
 
 }

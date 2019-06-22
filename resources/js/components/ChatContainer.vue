@@ -21,6 +21,8 @@ import ChatLog from './ChatLog';
 import MessageInput from './MessageInput';
 import axios from 'axios'
 import domain from '../domainconfig'
+import {mapState} from 'vuex'
+import Pubnub from 'pubnub-vue'
 
 export default {
   name: 'chat-container',
@@ -49,12 +51,39 @@ export default {
         this.authUUID = response.data
         this.$store.state.user.uuid = this.authUUID
         this.$store.state.user.username = this.username
-        this.$store.state.friends.push({name: "Global", chatKey: "global"})
+        this.$store.state.friends.push({name: "Global", chatKey: "global", lastMessage: ''}) 
         this.$store.state.control = "control"
+        let mL = []
+        Pubnub.getInstance().history({
+          channel: this.currentChat,
+          count: 15, // how many items to fetch
+          stringifiedTimeToken: true, // false is the default
+        })
+        .then(response => {
+          response.messages.forEach(message => {
+          mL.push(message.entry)
+          this.$store.state.friends.forEach(friend => {
+            if(friend.chatKey == "global") {
+              friend.lastMessage = message.entry.text
+            }
+          })
+          })
+        })
+        this.$store.commit('updateChat',{chatKey: "global",messages: mL})
     }).catch(err => {
       console.log(err)
     })
   },
+  // watch: {
+  //   currentChat: function() {
+  //     this.toUsername = this.currentChat.name
+  //   }
+  // },
+  computed : {
+    ...mapState([
+      'currentChat','friends'
+    ])
+  }
 };
 
 </script>

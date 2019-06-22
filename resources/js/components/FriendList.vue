@@ -10,7 +10,6 @@
       v-for="(friend, index) of friends"
       :key="index"
       :index="index"
-    
       :name="friend.name"
     ></friend-list-item>
     
@@ -22,6 +21,7 @@ import axios from 'axios'
 import FriendListItem from './FriendListItem';
 import {mapState} from 'vuex'
 import domain from '../domainconfig'
+import Pubnub from 'pubnub-vue'
 export default {
   name: 'friend-list',
   components: {
@@ -46,7 +46,25 @@ export default {
         // console.log(this.$store.state.friends)
         // console.log(this.alreadyExists(this.friendUsername))
             if(!this.alreadyExists(this.friendUsername)) {
-                this.$store.state.friends.push({name: this.friendUsername, chatKey: this.$store.state.user.uuid + "-" + response.data, selected : '' })
+              let friendChannel = this.$store.state.user.uuid + "-" + response.data
+              let mL = []
+              this.$store.state.friends.push({name: this.friendUsername, chatKey: friendChannel, lastMessage: ''})
+              Pubnub.getInstance().history({
+                channel: friendChannel,
+                count: 15, // how many items to fetch
+                stringifiedTimeToken: true, // false is the default
+	              })
+	              .then(response1 => {
+		              response1.messages.forEach(message => {
+                    mL.push(message.entry)
+                    this.$store.state.friends.forEach(friend => {
+                      if(friend.chatKey == friendChannel) {
+                      friend.lastMessage = message.entry.text
+                      }
+                    })
+		              })
+              })
+               this.$store.commit('addChat',{chatKey: friendChannel, messages: mL})
                 this.$pnPublish({
                   channel: 'control',
                   message: {
@@ -70,13 +88,30 @@ export default {
   checkAndAdd(msg) {
     if(msg.message.toName == this.username) {
       let subscribedChannels = []
-      this.$store.state.friends.push({name: msg.message.fromName, chatKey: msg.message.chatKey})
+      this.$store.state.friends.push({name: msg.message.fromName, chatKey: msg.message.chatKey, lastMessage: ''})
       this.$store.state.friends.forEach(friend => {
         subscribedChannels.push(friend.chatKey)
       })
-       this.$pnSubscribe({
-          channels: subscribedChannels
-        });
+      this.$pnSubscribe({
+        channels: subscribedChannels
+      });
+      let mL = []
+      Pubnub.getInstance().history({
+        channel: msg.message.chatKey,
+        count: 15, // how many items to fetch
+        stringifiedTimeToken: true, // false is the default
+	    })
+	    .then(response => {
+		    response.messages.forEach(message => {
+          mL.push(message.entry)
+          this.$store.state.friends.forEach(friend => {
+            if(friend.chatKey == msg.message.chatKey) {
+              friend.lastMessage = message.entry.text
+            }
+          })
+		    })
+      })
+      this.$store.commit('addChat',{chatKey: msg.message.chatKey, messages: mL})  
       //console.log(this.$store.state.friends)
     }
   },

@@ -1,6 +1,6 @@
 <template>
   <div class="message-input">
-    <input type = "text" placeholder="Your message here" @keydown.enter="submitMessage" v-model = "message" class = "messageInput">
+    <input type = "text" placeholder="Your message here" @keydown.enter="submitMessage" v-model = "message" class = "messageInput input-field">
   </div>
 </template>
 
@@ -16,7 +16,7 @@ export default {
   data() {
     return {
 	  message: '',
-	  channel: 'chatApp'
+	  
     }
   },
   created() {
@@ -29,12 +29,12 @@ export default {
     submitMessage() {
       // if(this.message != "") {
         this.$pnPublish({
-        	channel: this.currentChat.chatKey,
+        	channel: this.currentChat,
         	message: {
           		username: this.username,
           		text: this.message,
               time: Date.now(),
-              channel : this.currentChat.chatKey
+              channel : this.currentChat
         	}	   	  
         })  
     // }
@@ -49,15 +49,17 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .message-input {
   display: table-row;
   width: 90%;
   height: 26px;
+  background-color : white !important;
 }
 
 .messageInput {
-  width: 88%;
+  background-color : white !important;
+  width: 98% !important;
   height: 28px;
   padding: 0 5px;
   margin: 0;
@@ -69,5 +71,11 @@ export default {
   border: solid 3px black;
   border-radius: 3px;
   font-family: Helvetica;
+}
+input:not([type]), input[type=text]:not(.browser-default), input[type=password]:not(.browser-default), input[type=email]:not(.browser-default), input[type=url]:not(.browser-default), input[type=time]:not(.browser-default), input[type=date]:not(.browser-default), input[type=datetime]:not(.browser-default), input[type=datetime-local]:not(.browser-default), input[type=tel]:not(.browser-default), input[type=number]:not(.browser-default), input[type=search]:not(.browser-default), textarea.materialize-textarea {
+  background-color: white !important;
+}
+.input-field {
+   background-color: white !important;
 }
 </style>

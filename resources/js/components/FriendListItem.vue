@@ -1,61 +1,61 @@
 <template>
   <div class = "friend-list-item" :class = "selected" @click= "onFocus" :id = "name">
+    <img :src ="profileImg" />
     <div class="text">
       <span class="name" :id = "name">{{ name }}</span>
-      <span class="lastMessage" :id = "name"></span>
+      <span class="lastMessage" :id = "name">{{lastMessage}}</span>
     </div>
+  
   </div>
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import {mapState, mapGetters} from 'vuex'
 import Pubnub from 'pubnub-vue'
+import defaultProfileImg from '../assets/profile.png'
+import uri from '../domainconfig'
+import {EventBus} from '../event-bus.js';
+
 export default {
   name: 'friend-list-item',
   props: [
     'name',
-    'index'
+    'index',
   ],
   data() {
     return {
-      currentChatKey: '',
+     // lastMessage: '',
+      profileImg: uri + '/images/profile.png',
+      
     }
   },
   methods: {
     onFocus(event) {
-      // console.log(event)
-       this.$store.state.friends.forEach(friend => {
-        if(friend.name == event.currentTarget.id) {
-          this.currentChatKey  = friend.chatKey
-         
-          friend.selected =  "selected"
-        }
-        else {
-          friend.selected = ""
-        }
-        this.$store.state.currentChat = {
-        name: event.currentTarget.id, 
-        chatKey: this.currentChatKey,
-        }
-        //console.log(this.$store.state.friends)
-      })
-    }
+      EventBus.$emit('focus-input', event);
+      this.$store.commit('setCurrentChat', {chatKey: this.chatKey});
+    },
+   
   },
   computed: {
+    chatKey() {
+      return this.$store.state.friends[this.index].chatKey;
+    },
     ...mapState([
         'user','friends','currentChat'
     ]),
     selected() {
-      if(this.$store.state.currentChat.chatKey === this.thisChatKey) {
-        return "selected"
-      }
-      else {
-        return ""
-      }
+      return this.$store.state.currentChat === this.chatKey ? 'selected' : '';
     },
-    
+    avatarSrc() {
+      return defaultProfileImg
+    },
+    lastMessage() {
+      return this.$store.state.friends[this.index].lastMessage
+    }
   },
+  created() {
 
+  }
 };
 </script>
 
