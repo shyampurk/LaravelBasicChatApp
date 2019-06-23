@@ -51,8 +51,8 @@ After cloning the repository perform the following steps
     
 2. Open the file [PubnubConfig.php](/app/PubnubConfig.php) and update the following
 
-    -   Line 19: Replace the placeholder <PUBNUB_SUBSCRIBE_KEY> with your PubNub subscribe key
-    -   Line 20: Replace the placeholder <PUBNUB_PUBLISH_KEY> with your PubNub publish key
+    -   Line 19: Replace the placeholder <PUBNUB_PUBLISH_KEY> with your PubNub publish key
+    -   Line 20: Replace the placeholder <PUBNUB_SUBSCRIBE_KEY> with your PubNub subscribe key
     -   Line 21: Replace the placeholder <PUBNUB_SECRET_KEY> with your PubNub secret key
 
 3. Open the [domainconfig.js](resources/js/domainconfig.js) file and update the following
