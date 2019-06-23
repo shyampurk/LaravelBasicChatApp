@@ -4,11 +4,13 @@
 
 Before cloning the repo, make sure that you have the following things installed
 
-1. [Composer](https://getcomposer.org/) - PHP Package Manager
+1. [XAMPP](https://www.apachefriends.org/download.html) - A popular Apache distribution which also contains MySql and PHP. 
 
-2. [Node.js & NPM](https://nodejs.org/en/) - Node.JS and Node Package Manager
+2. [Composer](https://getcomposer.org/) - PHP Package Manager
 
-3. Laravel Command line
+3. [Node.js & NPM](https://nodejs.org/en/) - Node.JS and Node Package Manager
+
+4. Laravel Command line
 
         - composer global require "laravel/installer
     
@@ -38,6 +40,16 @@ After cloning the repository perform the following steps
     -   npm install
     
 ### Configure 
+
+To configure this app, you have to first perform some steps to generate the configuration parameters.
+
+1. PubNub Signup - [Signup](https://dashboard.pubnub.com/signup) for PubNub service and get your PubNub keys (Publish key, subscribe key and secret key)
+
+2. Start servers - Open the XAMPP control panel and start the Apache server and MySQL server. 
+
+3. Database setup -  Open PhPMyAdmin web console and import the sql file to create a new database (named chatapp) for the application. 
+
+Update the following files with the configuration parameters obtained from the above three steps.
 
 1. Open the .ENV file and update the following
 
