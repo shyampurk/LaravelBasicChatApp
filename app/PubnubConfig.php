@@ -16,8 +16,8 @@ class PubnubConfig extends SubscribeCallback {
     public function __construct($uuid) {
         $this->pnconf = new PNConfiguration();
         $this->pubnub = new PubNub($this->pnconf);
-        $this->pnconf->setSubscribeKey("<PUBNUB_SUBSCRIBE_KEY>");
         $this->pnconf->setPublishKey("<PUBNUB_PUBLISH_KEY>");
+        $this->pnconf->setSubscribeKey("<PUBNUB_SUBSCRIBE_KEY>");
         $this->pnconf->setSecretKey("<PUBNUB_SECRET_KEY>");
         $this->pnconf->setAuthKey($uuid);
     }
