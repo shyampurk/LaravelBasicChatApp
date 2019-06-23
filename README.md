@@ -61,8 +61,8 @@ After cloning the repository perform the following steps
     
 4. Open the [pubnubconfig.js](resources/js/pubnubconfig.js) file and update the following
 
-    -   Line 3: Replace the placeholder <PUBNUB_SUBSCRIBE_KEY> with your PubNub subscribe key
-    -   Line 4: Replace the placeholder <PUBNUB_PUBLISH_KEY> with your PubNub publish key
+    -   Line 3: Replace the placeholder <PUBNUB_PUBLISH_KEY> with your PubNub publish key
+    -   Line 4: Replace the placeholder <PUBNUB_SUBSCRIBE_KEY> with your PubNub subscribe key
     -   Line 5: Replace the placeholder <PUBNUB_SECRET_KEY> with your PubNub secret key
      
 ## Run
