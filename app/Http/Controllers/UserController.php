@@ -33,7 +33,9 @@ class UserController extends Controller
     public function signIn(Request $request) {
         $username = $request->get('username');
         $password = $request->get('password');
-        $exists = User::where('username',$username)->first();    
+        $exists = User::where('username',$username)->first();
+        $pubnub = new PubnubConfig($exists->uuid);
+        $pubnub->grantGlobal($exists->uuid);
         if($exists) {
             $passwordCorrect = Hash::check($password,$exists->password);
             return response()->json($passwordCorrect);
