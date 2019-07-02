@@ -57,6 +57,8 @@ To configure this app, you have to first perform some steps to generate the conf
 
 1. PubNub Signup - [Signup](https://dashboard.pubnub.com/signup) for PubNub service and get your PubNub keys (Publish key, subscribe key and secret key)
 
+One the new keys are generated, you also have to enable "Storage & Playback" and "Access manager" features for them.  
+
 2. Start servers - Open the XAMPP control panel and start the Apache server and MySQL server. 
 
 3. Database setup -  Open PhPMyAdmin web console and import the [sql file](chatapp.sql) to create a new database (named chatapp) for the application. 
