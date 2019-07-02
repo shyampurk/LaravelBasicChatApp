@@ -43,29 +43,30 @@ Before cloning the repo, make sure that you have the following things installed
 
 1. Install dependencies for Laravel backend
 
-    -   composer install
+        composer install
     
 2. Install dependencies for Vue frontend
 
-    -   npm install
+        npm install
     
 ### Configure 
 
 To configure this app, you have to first perform some steps to generate the configuration parameters.
 
-#### Step 1. PubNub Signup - [Signup](https://dashboard.pubnub.com/signup) for PubNub service and get your PubNub keys (Publish key, subscribe key and secret key)
+#### Step 1: PubNub Signup 
+
+[Signup](https://dashboard.pubnub.com/signup) for PubNub service and get your PubNub keys (Publish key, subscribe key and secret key)
 
 Note: One the new keys are generated, you also have to enable "Storage & Playback" and "Access manager" features for them.  
 
-#### Step 2. Start servers - Open the XAMPP control panel and start the Apache server and MySQL server. 
+#### Step 2: Start servers 
 
-#### Step 3. Database setup -  Open PhPMyAdmin web console and import the [sql file](chatapp.sql) to create a new database (named chatapp) for the application. 
+Open the XAMPP control panel and start the Apache server and MySQL server. 
 
-#### Step 4. Clone the repo - Clone this repositpry under the web root folder of XAMPP Apache web server. 
+#### Step 3: Clone the repo - Clone this repositpry under the web root folder of XAMPP Apache web server. 
 
 
-#### Step 5. Update configuration - In the cloned repository, update the following files with the configuration parameters as follows.
-
+#### Step 4: Update configuration - In the cloned repository, update the following files with the configuration parameters as follows.
     
    1. Open the file [PubnubConfig.php](/app/PubnubConfig.php) and update the following
 
@@ -90,7 +91,11 @@ Note: One the new keys are generated, you also have to enable "Storage & Playbac
         -   Line 13: Set the DB_USERNAME value to the database username. Default user name is "root"
         -   Line 14: Set the DB_PASSWORD value to the database password.  Default password is none so the value is left blank.
     
-    
+#### Step 5: Database setup
+
+Open PhPMyAdmin web console and import the [sql file](chatapp.sql) to create a new database (named chatapp) for the application. 
+
+
 ## Run
 
 1. Generate autoload.php to aggregate all vendor dependencies
