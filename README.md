@@ -63,10 +63,14 @@ Note: One the new keys are generated, you also have to enable "Storage & Playbac
 
 Open the XAMPP control panel and start the Apache server and MySQL server. 
 
-#### Step 3: Clone the repo - Clone this repositpry under the web root folder of XAMPP Apache web server. 
+#### Step 3: Clone the repo
+
+Clone this repositpry under the web root folder of XAMPP Apache web server. 
 
 
-#### Step 4: Update configuration - In the cloned repository, update the following files with the configuration parameters as follows.
+#### Step 4: Update configuration
+
+In the cloned repository, update the following files with the configuration parameters as follows.
     
    1. Open the file [PubnubConfig.php](/app/PubnubConfig.php) and update the following
 
