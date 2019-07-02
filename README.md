@@ -8,7 +8,7 @@ Before cloning the repo, make sure that you have the following things installed
 
 2. [Composer](https://getcomposer.org/) - PHP Package Manager
 
-    Note: Mac users can install composer using homebrew.
+        Note: Mac users can install composer using homebrew.
         
         brew install composer 
 
