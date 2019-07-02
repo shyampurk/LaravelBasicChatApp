@@ -53,42 +53,42 @@ Before cloning the repo, make sure that you have the following things installed
 
 To configure this app, you have to first perform some steps to generate the configuration parameters.
 
-1. PubNub Signup - [Signup](https://dashboard.pubnub.com/signup) for PubNub service and get your PubNub keys (Publish key, subscribe key and secret key)
+#### Step 1. PubNub Signup - [Signup](https://dashboard.pubnub.com/signup) for PubNub service and get your PubNub keys (Publish key, subscribe key and secret key)
 
-One the new keys are generated, you also have to enable "Storage & Playback" and "Access manager" features for them.  
+Note: One the new keys are generated, you also have to enable "Storage & Playback" and "Access manager" features for them.  
 
-2. Start servers - Open the XAMPP control panel and start the Apache server and MySQL server. 
+#### Step 2. Start servers - Open the XAMPP control panel and start the Apache server and MySQL server. 
 
-3. Database setup -  Open PhPMyAdmin web console and import the [sql file](chatapp.sql) to create a new database (named chatapp) for the application. 
+#### Step 3. Database setup -  Open PhPMyAdmin web console and import the [sql file](chatapp.sql) to create a new database (named chatapp) for the application. 
 
-4. Clone the repo - Clone this repositpry under the web root folder of XAMPP Apache web server. 
+#### Step 4. Clone the repo - Clone this repositpry under the web root folder of XAMPP Apache web server. 
 
 
-In the cloned repository, update the following files with the configuration parameters as follows.
+#### Step 5. Update configuration - In the cloned repository, update the following files with the configuration parameters as follows.
 
     
-1. Open the file [PubnubConfig.php](/app/PubnubConfig.php) and update the following
+   1. Open the file [PubnubConfig.php](/app/PubnubConfig.php) and update the following
 
-    -   Line 19: Replace the placeholder <PUBNUB_PUBLISH_KEY> with your PubNub publish key
-    -   Line 20: Replace the placeholder <PUBNUB_SUBSCRIBE_KEY> with your PubNub subscribe key
-    -   Line 21: Replace the placeholder <PUBNUB_SECRET_KEY> with your PubNub secret key
+        -   Line 19: Replace the placeholder <PUBNUB_PUBLISH_KEY> with your PubNub publish key
+        -   Line 20: Replace the placeholder <PUBNUB_SUBSCRIBE_KEY> with your PubNub subscribe key
+        -   Line 21: Replace the placeholder <PUBNUB_SECRET_KEY> with your PubNub secret key
 
-2. Open the [domainconfig.js](resources/js/domainconfig.js) file and update the following
+   2. Open the [domainconfig.js](resources/js/domainconfig.js) file and update the following
 
-    -   Line 1: Replace the placeholder <HOST_OR_IP> with your web servers root address. If you are running the XAMPP locally then "localhost" is the root address.
+        -   Line 1: Replace the placeholder <HOST_OR_IP> with your web servers root address. If you are running the XAMPP locally then "localhost" is the root address.
     
-3. Open the [pubnubconfig.js](resources/js/pubnubconfig.js) file and update the following
+   3. Open the [pubnubconfig.js](resources/js/pubnubconfig.js) file and update the following
 
-    -   Line 3: Replace the placeholder <PUBNUB_PUBLISH_KEY> with your PubNub publish key
-    -   Line 4: Replace the placeholder <PUBNUB_SUBSCRIBE_KEY> with your PubNub subscribe key
-    -   Line 5: Replace the placeholder <PUBNUB_SECRET_KEY> with your PubNub secret key
+        -   Line 3: Replace the placeholder <PUBNUB_PUBLISH_KEY> with your PubNub publish key
+        -   Line 4: Replace the placeholder <PUBNUB_SUBSCRIBE_KEY> with your PubNub subscribe key
+        -   Line 5: Replace the placeholder <PUBNUB_SECRET_KEY> with your PubNub secret key
 
-4. OPTIONAL- In case you are changing the default configuration for Apache and MySQL or testing on a different server instead on the local computer then open the .ENV file and update the following
+   4. OPTIONAL- In case you are changing the default configuration for Apache and MySQL or testing on a different server instead on the local computer then open the .ENV file and update the following
 
-    -   Line 10: Set the DB_HOST value to the IP address of the database host server
-    -   Line 11: Set the DB_PORT value to the port number of the database
-    -   Line 13: Set the DB_USERNAME value to the database username. Default user name is "root"
-    -   Line 14: Set the DB_PASSWORD value to the database password.  Default password is none so the value is left blank.
+        -   Line 10: Set the DB_HOST value to the IP address of the database host server
+        -   Line 11: Set the DB_PORT value to the port number of the database
+        -   Line 13: Set the DB_USERNAME value to the database username. Default user name is "root"
+        -   Line 14: Set the DB_PASSWORD value to the database password.  Default password is none so the value is left blank.
     
     
 ## Run
