@@ -1,8 +1,10 @@
 # LaravelBasicChatApp
 
+A realtime chat app built using Laravel framework and Vue.JS frontend, powered by PubNub.
+
 ## Prerequisites
 
-Before cloning the repo, make sure that you have the following things installed
+Before proceeding to build this application, make sure that you have the following things installed
 
 1. [XAMPP](https://www.apachefriends.org/download.html) - A popular Apache distribution which also contains MySql and PHP. 
 
@@ -37,21 +39,9 @@ Before cloning the repo, make sure that you have the following things installed
                 export PATH="~/.config/composer/vendor/bin:$PATH"
     
 
-## Installation
 
-### Install Dependencies
-
-1. Install dependencies for Laravel backend
-
-        composer install
-    
-2. Install dependencies for Vue frontend
-
-        npm install
     
 ### Configure 
-
-To configure this app, you have to first perform some steps to generate the configuration parameters.
 
 #### Step 1: PubNub Signup 
 
@@ -59,14 +49,13 @@ To configure this app, you have to first perform some steps to generate the conf
 
 Note: One the new keys are generated, you also have to enable "Storage & Playback" and "Access manager" features for them.  
 
-#### Step 2: Start servers 
+#### Step 2: Start Apache & MySQL servers 
 
 Open the XAMPP control panel and start the Apache server and MySQL server. 
 
 #### Step 3: Clone the repo
 
-Clone this repositpry under the web root folder of XAMPP Apache web server. 
-
+Clone this repository under the web root folder of XAMPP Apache web server. The default webroot folder in XAMPP is "htdocs". 
 
 #### Step 4: Update configuration
 
@@ -99,6 +88,14 @@ In the cloned repository, update the following files with the configuration para
 
 Open PhPMyAdmin web console and import the [sql file](chatapp.sql) to create a new database (named chatapp) for the application. 
 
+
+## Installation
+
+From the repository root path, run the following commands to install dependencies for Laravel and Vue
+
+        composer install
+    
+        npm install
 
 ## Run
 
