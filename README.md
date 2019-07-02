@@ -14,19 +14,27 @@ Before cloning the repo, make sure that you have the following things installed
 
 3. [Node.js & NPM](https://nodejs.org/en/) - Node.JS and Node Package Manager
 
-4. Laravel Command line Tool
+4. Laravel
 
-        - composer global require "laravel/installer
+        To install Laravel CLI, perform the following commands from your terminal
+        
+        Step 1: Install Laravel CLI
+        
+            composer global require "laravel/installer
+            
+        Step 2: Configure the path to access Laravel globally
     
-    To make sure that you can invoke Laravel command line directly, make sure that it is in the system path.
+            For Windows
+            
+                setx /M path “%path%;%appdata%Composer\vendor\bin”
     
-    For Windows you can perform the following commands to add it to the system path
+                set PATH=%PATH%;%USERPROFILE%AppDataRoamingComposer\vendor\bin
     
-    setx /M path “%path%;%appdata%Composer\vendor\bin”
-    
-    set PATH=%PATH%;%USERPROFILE%AppDataRoamingComposer\vendor\bin
-    
-    where USERPROFILE is the Windows user name
+                Note: USERPROFILE is the Windows user name
+                
+            For Unix/Linux
+            
+                export PATH="~/.config/composer/vendor/bin:$PATH"
     
 
 ## Installation
