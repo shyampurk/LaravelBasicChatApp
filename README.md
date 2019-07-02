@@ -8,9 +8,13 @@ Before cloning the repo, make sure that you have the following things installed
 
 2. [Composer](https://getcomposer.org/) - PHP Package Manager
 
+    Note: Mac users can install composer using homebrew.
+        
+        brew install composer 
+
 3. [Node.js & NPM](https://nodejs.org/en/) - Node.JS and Node Package Manager
 
-4. Laravel Command line
+4. Laravel Command line Tool
 
         - composer global require "laravel/installer
     
