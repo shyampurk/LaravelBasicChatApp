@@ -4,7 +4,7 @@ A realtime chat app built using Laravel framework and Vue.JS frontend, powered b
 
 ## Prerequisites
 
-Before proceeding to build this application, make sure that you have the following things installed
+Before proceeding to build this application, make sure that you have the following software packages installed
 
 1. [XAMPP](https://www.apachefriends.org/download.html) - A popular Apache distribution which also contains MySql and PHP. 
 
