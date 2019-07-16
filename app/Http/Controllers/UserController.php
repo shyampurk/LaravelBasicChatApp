@@ -34,9 +34,10 @@ class UserController extends Controller
         $username = $request->get('username');
         $password = $request->get('password');
         $exists = User::where('username',$username)->first();
-        $pubnub = new PubnubConfig($exists->uuid);
-        $pubnub->grantGlobal($exists->uuid);
+        
         if($exists) {
+            $pubnub = new PubnubConfig($exists->uuid);
+            $pubnub->grantGlobal($exists->uuid);
             $passwordCorrect = Hash::check($password,$exists->password);
             return response()->json($passwordCorrect);
         }
