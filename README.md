@@ -41,7 +41,7 @@ Before proceeding to build this application, make sure that you have the followi
 
 
     
-### Configure 
+### [Configuration](#Configuration) 
 
 #### Step 1: PubNub Signup 
 
@@ -89,7 +89,7 @@ In the cloned repository, update the following files with the configuration para
 Open PhPMyAdmin web console and import the [sql file](chatapp.sql) to create a new database (named chatapp) for the application. 
 
 
-## Installation
+## [Installation](#Installation)
 
 From the repository root path, run the following commands to install dependencies for Laravel and Vue
 
@@ -97,7 +97,7 @@ From the repository root path, run the following commands to install dependencie
     
         npm install
 
-## Run
+## [Run](#Run)
 
 1. Generate autoload.php to aggregate all vendor dependencies
 
