@@ -16,7 +16,7 @@ Before proceeding to build this application, make sure that you have the followi
 
 3. [Node.js & NPM](https://nodejs.org/en/) - Node.JS and Node Package Manager
 
-4. Laravel
+4. [Laravel](https://laravel.com/)
 
    To install Laravel CLI, perform the following commands from your terminal
         
