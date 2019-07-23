@@ -2,7 +2,7 @@
 
 A realtime chat app built using Laravel framework and Vue.JS frontend, powered by PubNub.
 
-## Prerequisites
+## [Prerequisites](#Prerequisites)
 
 Before proceeding to build this application, make sure that you have the following software packages installed
 
