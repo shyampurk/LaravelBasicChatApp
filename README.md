@@ -18,15 +18,15 @@ Before proceeding to build this application, make sure that you have the followi
 
 4. Laravel
 
-        To install Laravel CLI, perform the following commands from your terminal
+   To install Laravel CLI, perform the following commands from your terminal
         
-        Step 1: Install Laravel CLI
+   Step 1: Install Laravel CLI
         
             composer global require "laravel/installer
             
-        Step 2: Configure the path to access Laravel globally
+   Step 2: Configure the path to access Laravel globally
     
-            For Windows
+     For Windows
             
                 setx /M path “%path%;%appdata%Composer\vendor\bin”
     
@@ -34,7 +34,7 @@ Before proceeding to build this application, make sure that you have the followi
     
                 Note: USERPROFILE is the Windows user name
                 
-            For Unix/Linux
+     For Unix/Linux
             
                 export PATH="~/.config/composer/vendor/bin:$PATH"
     
